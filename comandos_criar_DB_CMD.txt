@@ -1,0 +1,28 @@
+mysql -u root -p
+senha
+
+CREATE DATABASE bd_loja;
+USE bd_loja;
+
+CREATE TABLE tb_produtos (
+id INT AUTO_INCREMENT PRIMARY KEY,
+NomeProduto VARCHAR(255),
+Categoria VARCHAR(255),
+QuantidadeEstoque INT,
+Valor DECIMAL
+);
+
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.1\\Uploads\\estoque.csv"
+INTO TABLE tb_produtos
+FIELDS TERMINATED BY ","
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(NomeProduto, Categoria, QuantidadeEstoque, Valor);
+
+                 SET GLOBAL local_infile=1;
+
+                 SHOW VARIABLES LIKE 'secure_file_priv'
+
+
+SELECT * FROM tb_produtos;
+
